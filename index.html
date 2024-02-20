@@ -8,74 +8,77 @@
     </head>
     <body>
         <div id="main-container">
-            <div class="calc-row"></div>
+            <div class="calc-row">
+                <div id="main-display"></div>
+            </div>
             <div class="calc-row">
                 <div class="calc-btn">
-                    <button>AC</button>
+                    <button id="reset">AC</button>
                 </div>
                 <div class="calc-btn">
-                    <button>+/-</button>
+                    <button id="polarity">+/-</button>
                 </div>
                 <div class="calc-btn">
-                    <button>%</button>
+                    <button id="divide-by-100">%</button>
                 </div>
                 <div class="calc-btn">
-                    <button>÷</button>
+                    <button id="divide">÷</button>
                 </div>
             </div>
             <div class="calc-row">
                 <div class="calc-btn">
-                    <button>7</button>
+                    <button class="number">7</button>
                 </div>
                 <div class="calc-btn">
-                    <button>8</button>
+                    <button class="number">8</button>
                 </div>
                 <div class="calc-btn">
-                    <button>9</button>
+                    <button class="number">9</button>
                 </div>
                 <div class="calc-btn">
-                    <button>X</button>
-                </div>
-            </div>
-            <div class="calc-row">
-                <div class="calc-btn">
-                    <button>4</button>
-                </div>
-                <div class="calc-btn">
-                    <button>5</button>
-                </div>
-                <div class="calc-btn">
-                    <button>6</button>
-                </div>
-                <div class="calc-btn">
-                    <button>-</button>
+                    <button id="multiply">X</button>
                 </div>
             </div>
             <div class="calc-row">
                 <div class="calc-btn">
-                    <button>1</button>
+                    <button class="number">4</button>
                 </div>
                 <div class="calc-btn">
-                    <button>2</button>
+                    <button class="number">5</button>
                 </div>
                 <div class="calc-btn">
-                    <button>3</button>
+                    <button class="number">6</button>
                 </div>
                 <div class="calc-btn">
-                    <button>+</button>
+                    <button id="subtract">-</button>
+                </div>
+            </div>
+            <div class="calc-row">
+                <div class="calc-btn">
+                    <button class="number">1</button>
+                </div>
+                <div class="calc-btn">
+                    <button class="number">2</button>
+                </div>
+                <div class="calc-btn">
+                    <button class="number">3</button>
+                </div>
+                <div class="calc-btn">
+                    <button id="add">+</button>
                 </div>
             </div>
             <div class="calc-row">
                 <div class="calc-btn" id="zero">
-                    <button>0</button>
+                    <button class="number">0</button>
                 </div>
                 <div class="calc-btn">
-                    <button>.</button>
+                    <button id="decimal">.</button>
                 </div>
                 <div class="calc-btn">
-                    <button>=</button>
+                    <button id="equals">=</button>
                 </div>
             </div>
         </div>
+        <script src="script.js"></script>
     </body>
 </html>

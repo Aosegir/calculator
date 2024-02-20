@@ -1,0 +1,37 @@
+html, body, #grid {
+    margin: 0;
+    height: 100%;
+}
+
+#main-container {
+    border: 1px solid black;
+    height: 600px;
+    width: 400px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.calc-row {
+    display: flex;
+    border: 1px solid skyblue;
+    flex: 1;
+}
+
+.calc-btn {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+#zero {
+    flex: 2;
+}
+
+button {
+    height: 100%;
+    width: 100%;
+}

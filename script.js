@@ -57,13 +57,24 @@ const operators = document.querySelectorAll('.operator');
 
 operators.forEach((operator) => {
     operator.addEventListener('click', () => {
+        if(object['lastPressedEquals']) {
+            object["operatorLastPressed"] = "";
+        }
+        console.log(object["operatorLastPressed"]);
+        if(object["operatorLastPressed"]) {
+            object["savedValueRight"] = mainDisplay.textContent;
+            mainDisplay.textContent = 
+            operate(object["savedValueLeft"], object["savedValueRight"]
+            , object["operatorLastPressed"]);
+            object["savedValueLeft"] = mainDisplay.textContent;
+        }
         if(mainDisplay.textContent > 0) {
             object["savedValueLeft"] = mainDisplay.textContent;
         }
 
         object["operatorLastPressed"] = operator.textContent;
 
-        mainDisplay.textContent = 0;
+        object["resetDisplay"] = true;
         object["lastPressedEquals"] = false;
     });
 });
@@ -101,4 +112,18 @@ const reset = document.getElementById('reset');
 
 reset.addEventListener('click', () => {
     window.location.reload();
+});
+
+const polarity = document.getElementById('polarity');
+
+polarity.addEventListener('click', () => {
+    mainDisplay.textContent = -mainDisplay.textContent;
+    object["savedValueLeft"] = mainDisplay.textContent;
+});
+
+const divideBy100 = document.getElementById('divide-by-100');
+
+divideBy100.addEventListener('click', () => {
+    mainDisplay.textContent /= 100;
+    object["savedValueLeft"] = mainDisplay.textContent;
 });

@@ -3,7 +3,6 @@ let object = {
     operatorLastPressed: "",
     savedValueLeft: 0,
     savedValueRight: 0,
-    mainDisplay: 0,
     lastPressedEquals: false,
 };
 
@@ -13,7 +12,8 @@ let object = {
 const add = (num1, num2) => Number(num1) + Number(num2);
 const subtract = (num1, num2) => Number(num1) - Number(num2);
 const multiply = (num1, num2) => Number(num1) * Number(num2);
-const divide = (num1, num2) => Number(num1) / Number(num2);
+const divide = (num1, num2) => num2 == 0 ? alert("Get bent!")
+                : Number(num1) / Number(num2);
 
 function operate(num1, num2, operator) {
     switch(operator) {
@@ -39,10 +39,11 @@ const mainDisplay = document.getElementById('main-display');
 
 numbers.forEach((number) => {
     number.addEventListener('click', () => {
-        if(mainDisplay.textContent == 0 || object["resetDisplay"]) {
+        if((mainDisplay.textContent == 0 && !mainDisplay.textContent.includes('.'))
+        || object["resetDisplay"]) {
             mainDisplay.textContent = number.textContent;
             object["resetDisplay"] = false;
-        } else {
+        } else if (mainDisplay.textContent.length < 9) {
             mainDisplay.textContent += number.textContent;
         }
         object["lastPressedEquals"] = false;
@@ -60,7 +61,6 @@ operators.forEach((operator) => {
         if(object['lastPressedEquals']) {
             object["operatorLastPressed"] = "";
         }
-        console.log(object["operatorLastPressed"]);
         if(object["operatorLastPressed"]) {
             object["savedValueRight"] = mainDisplay.textContent;
             mainDisplay.textContent = 
@@ -82,28 +82,21 @@ operators.forEach((operator) => {
 let equals = document.getElementById('equals');
 
 equals.addEventListener('click', () => {
-    console.log(object["savedValueLeft"], object["operatorLastPressed"]
-    , object["savedValueRight"]);
-    if(object["lastPressedEquals"]) {
-        if(object["operatorLastPressed"]) {
-            mainDisplay.textContent = 
-            operate(object["savedValueLeft"], object["savedValueRight"]
-            , object["operatorLastPressed"]);
-            object["savedValueLeft"] = mainDisplay.textContent;
-            object["resetDisplay"] = true;
-        }
-    } else {
-        if(object["operatorLastPressed"]) {
-            object["savedValueRight"] = mainDisplay.textContent;
-            mainDisplay.textContent = 
-            operate(object["savedValueLeft"], object["savedValueRight"]
-            , object["operatorLastPressed"]);
-            object["resetDisplay"] = true;
-            object["savedValueLeft"] = mainDisplay.textContent;
-        }
+    if(!object["lastPressedEquals"]) {
+        object["savedValueRight"] = mainDisplay.textContent;
         object["lastPressedEquals"] = true;
     }
+
+    if(object["operatorLastPressed"]) {
+        mainDisplay.textContent = 
+        +operate(object["savedValueLeft"], object["savedValueRight"]
+        , object["operatorLastPressed"]).toFixed(2);
+        mainDisplay.textContent = mainDisplay.textContent.substring(0,9);
+        object["resetDisplay"] = true;
+        object["savedValueLeft"] = mainDisplay.textContent;
+    }
 });
+
 
 
 /* -- MISC. BUTTONS -- */
@@ -126,4 +119,12 @@ const divideBy100 = document.getElementById('divide-by-100');
 divideBy100.addEventListener('click', () => {
     mainDisplay.textContent /= 100;
     object["savedValueLeft"] = mainDisplay.textContent;
+});
+
+const decimal = document.getElementById('decimal');
+
+decimal.addEventListener('click', () => {
+    if(!mainDisplay.textContent.includes('.')) {
+        mainDisplay.textContent += decimal.textContent;
+    }
 });

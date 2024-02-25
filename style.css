@@ -9,6 +9,7 @@ html, body, #grid {
     width: 400px;
     display: flex;
     flex-direction: column;
+    background-color: #B8E1FF;
 }
 
 #main-display {
@@ -16,18 +17,17 @@ html, body, #grid {
     flex-direction: row-reverse;
     width: 100%;
     height: 100%;
+    font-size: 80px;
 }
 
 .calc-row {
     display: flex;
-    border: 1px solid skyblue;
     flex: 1;
 }
 
 .calc-btn {
     display: flex;
     flex-direction: column;
-    border: 1px solid red;
     flex: 1;
     justify-content: center;
     align-items: center;
@@ -38,6 +38,29 @@ html, body, #grid {
 }
 
 button {
-    height: 100%;
-    width: 100%;
+    height: 75%;
+    width: 75%;
+    border-radius: 4px;
+    font-size: 15px;
+}
+
+#zero button  {
+    height: 75%;
+    width: 90%;
+}
+
+#main-display, button {
+    font-family: sans-serif;
+}
+
+.operator {
+    background-color: honeydew;
+}
+
+.number {
+    background-color: #FFB8E1;
+}
+
+.misc {
+    background-color: #B8BDFF;
 }
